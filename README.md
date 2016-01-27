@@ -1,1 +1,3 @@
-# client-android
+# client_android
+马哥私有云客户端
+KeyStore使用要放在project的上级目录

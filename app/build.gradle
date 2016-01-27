@@ -1,8 +1,10 @@
+//声明android程序
 apply plugin: 'com.android.application'
 
+//android构建入口点，构建所需要的参数
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.chenyu.monster"
@@ -11,10 +13,69 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    buildTypes {
+
+    //签名
+    signingConfigs {
+        debug {
+            storeFile file("../../Mason.jks")
+            storePassword "ritiankuangmo"
+            keyAlias "mason"
+            keyPassword "malagebi"
+        }
         release {
+            storeFile file("../../Mason.jks")
+            storePassword "ritiankuangmo"
+            keyAlias "mason"
+            keyPassword "malagebi"
+        }
+    }
+
+    //构建类型 debug、release
+    buildTypes {
+        debug {
+            //开debug,显示log
+            buildConfigField("boolean", "LOG_DEBUG", "true")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //debug签名
+            signingConfig signingConfigs.debug
+        }
+        release {
+            //关debug,不显示log
+            buildConfigField("boolean", "LOG_DEBUG", "false")
+            //混淆 突破65535限制
+            minifyEnabled false
+            //默认混淆配置文件，proguard-android.txt在sdk目录，proguard-rules.pro目录下自己的配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //zipAlign 优化
+            zipAlignEnabled true
+            //移除无用的resources文件
+            shrinkResources true
+            //release签名
+            signingConfig signingConfigs.release
+            //多渠道包名
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为mason_v1.0_wandoujia.apk
+                        def fileName = "mason_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+    }
+
+    //Java 版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    productFlavors {
+        baidu {
+            manifestPlaceholders = [channel_value:"baidu"]
         }
     }
 }
