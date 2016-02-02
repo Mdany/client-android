@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by chenyu on 16/1/26.
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private Context mContext;
+    protected Context mContext;
 
     protected abstract int getLayoutId();
 

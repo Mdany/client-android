@@ -8,29 +8,53 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.chenyu.monster.DoitApplication;
 import com.chenyu.monster.R;
+import com.chenyu.monster.framework.BaseActivity;
+import com.chenyu.monster.util.ToastUtil;
 
-public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
+public class HomeActivity extends BaseActivity
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    /**
+     * toolbar
+     */
     private Toolbar toolbar;
     private FloatingActionButton fab;
-    private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     /**
      * 侧边栏
      */
     private NavigationView navigationView;
+    /**
+     * 侧滑菜单
+     */
+    private DrawerLayout drawer;
+    /**
+     * 退出时间
+     */
+    private int exitTime = 0;
+    /**
+     * 头像
+     */
+    private ImageView avatar;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.a_home;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a_main);
+    }
+
+    @Override
+    protected void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -51,12 +75,18 @@ public class HomeActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        avatar = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.imageView);
+        avatar.setOnClickListener(this);
     }
 
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (System.currentTimeMillis() - exitTime > 2000) {
+            ToastUtil.show(mContext, mContext.getString(R.string.home_exit));
+            exitTime = (int) System.currentTimeMillis();
         } else {
             super.onBackPressed();
         }
@@ -104,8 +134,19 @@ public class HomeActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.imageView:
+                if (DoitApplication.application.getUser() == null) {
+                    startActivity(LoginActivity.class);
+                }
+                break;
+        }
     }
 }

@@ -7,18 +7,44 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
     <EditText
+        android:id="@+id/username_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:hint="@string/login_username"
+        android:inputType="textEmailAddress"
+        android:maxEms="50"
+        android:textColor="@color/colorSecondTitle"
+        android:textColorHint="@color/colorSecondContent"
+        android:textSize="@dimen/text_size_normal_8" />
 
     <EditText
+        android:id="@+id/password_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLength="10"
+        android:hint="@string/login_password"
+        android:inputType="textPassword"
+        android:maxEms="10"
         android:minEms="6"
-        android:inputType="textPassword"/>
+        android:textColor="@color/colorSecondTitle"
+        android:textColorHint="@color/colorSecondContent"
+        android:textSize="@dimen/text_size_normal_8" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_button"
+        android:text="@string/login"/>
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_button"
+        android:text="@string/register"/>
 
 </LinearLayout>
