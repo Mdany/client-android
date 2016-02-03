@@ -8,43 +8,67 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:src="@mipmap/splash"/>
 
-    <EditText
-        android:id="@+id/username_edt"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/username_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/username_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxEms="50"
+            android:textColor="@color/colorSecondTitle"
+            android:textColorHint="@color/colorSecondContent"
+            android:textSize="@dimen/text_size_normal_8" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/password_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/password_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxEms="10"
+            android:minEms="6"
+            android:textColor="@color/colorSecondTitle"
+            android:textColorHint="@color/colorSecondContent"
+            android:textSize="@dimen/text_size_normal_8" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/login_username"
-        android:inputType="textEmailAddress"
-        android:maxEms="50"
-        android:textColor="@color/colorSecondTitle"
-        android:textColorHint="@color/colorSecondContent"
-        android:textSize="@dimen/text_size_normal_8" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/password_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_password"
-        android:inputType="textPassword"
-        android:maxEms="10"
-        android:minEms="6"
-        android:textColor="@color/colorSecondTitle"
-        android:textColorHint="@color/colorSecondContent"
-        android:textSize="@dimen/text_size_normal_8" />
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/login_button"
+            android:layout_margin="10dp"
+            android:text="@string/login" />
 
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/login_button"
-        android:text="@string/login"/>
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_button"
+            android:text="@string/register" />
 
-    <Button
-        android:id="@+id/register_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/login_button"
-        android:text="@string/register"/>
+    </LinearLayout>
 
 </LinearLayout>

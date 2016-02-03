@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import com.chenyu.monster.DoitApplication;
 import com.chenyu.monster.R;
 import com.chenyu.monster.framework.BaseActivity;
-import com.chenyu.monster.util.ToastUtil;
+import com.chenyu.monster.util.SnackUtil;
 
 public class HomeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -85,7 +85,7 @@ public class HomeActivity extends BaseActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else if (System.currentTimeMillis() - exitTime > 2000) {
-            ToastUtil.show(mContext, mContext.getString(R.string.home_exit));
+            SnackUtil.show(drawer, R.string.home_exit);
             exitTime = (int) System.currentTimeMillis();
         } else {
             super.onBackPressed();

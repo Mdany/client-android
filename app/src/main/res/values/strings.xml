@@ -9,8 +9,10 @@
     <!--首页-->
     <string name="home_exit">再按一次退出</string>
     <!--登录页-->
-    <string name="login_username">请输入用户名</string>
+    <string name="login_username">请输入注册邮箱</string>
     <string name="login_password">密码6～10位</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
+    <string name="login_username_error">请输入正确的邮箱</string>
+    <string name="login_password_error">请输入正确的密码</string>
 </resources>
