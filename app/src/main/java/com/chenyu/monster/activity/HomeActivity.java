@@ -1,5 +1,6 @@
 package com.chenyu.monster.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,7 @@ import com.chenyu.monster.util.SnackUtil;
 
 public class HomeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    private static final int REQUEST_LOGIN = 1;
     /**
      * toolbar
      */
@@ -42,6 +44,10 @@ public class HomeActivity extends BaseActivity
      * 头像
      */
     private ImageView avatar;
+    /**
+     * 推出
+     */
+    private ImageView logout;
 
     @Override
     protected int getLayoutId() {
@@ -76,8 +82,15 @@ public class HomeActivity extends BaseActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        avatar = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.imageView);
+        View headerView = navigationView.getHeaderView(0);
+        avatar = (ImageView) headerView.findViewById(R.id.imageView);
         avatar.setOnClickListener(this);
+
+        logout = (ImageView) headerView.findViewById(R.id.logout_iv);
+        logout.setOnClickListener(this);
+        if (DoitApplication.application.getUser() != null) {
+            logout.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -144,9 +157,26 @@ public class HomeActivity extends BaseActivity
         switch (id) {
             case R.id.imageView:
                 if (DoitApplication.application.getUser() == null) {
-                    startActivity(LoginActivity.class);
+                    startActivity(LoginActivity.class, REQUEST_LOGIN);
+                } else {
+                    //TODO 个人资料？
                 }
                 break;
+            case R.id.logout_iv:
+
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_LOGIN:
+                    logout.setVisibility(View.VISIBLE);
+                    break;
+            }
         }
     }
 }

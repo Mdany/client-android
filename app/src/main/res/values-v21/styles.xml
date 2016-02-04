@@ -5,4 +5,9 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="input_layout_hint">
+        <item name="android:textColor">@color/colorSecondTitle</item>
+        <item name="android:textSize">@dimen/text_size_normal_6</item>
+    </style>
 </resources>
