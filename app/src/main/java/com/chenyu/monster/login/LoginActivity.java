@@ -1,4 +1,4 @@
-package com.chenyu.monster.activity;
+package com.chenyu.monster.login;
 
 import android.support.design.widget.TextInputLayout;
 import android.text.Editable;

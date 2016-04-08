@@ -6,6 +6,14 @@
 
     <string name="action_settings">Settings</string>
 
+    <!--User-->
+    <string name="user_name">Nemo</string>
+    <string name="user_desc">非同城，不交友</string>
+    <!--menu-->
+    <string name="news">新闻</string>
+    <string name="image">图片</string>
+    <string name="weather">天气</string>
+    <string name="about">关于</string>
     <!--首页-->
     <string name="home_exit">再按一次退出</string>
     <!--登录页-->

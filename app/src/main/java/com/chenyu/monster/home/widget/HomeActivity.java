@@ -1,27 +1,32 @@
-package com.chenyu.monster.activity;
+package com.chenyu.monster.home.widget;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.chenyu.monster.DoitApplication;
 import com.chenyu.monster.R;
+import com.chenyu.monster.login.LoginActivity;
 import com.chenyu.monster.framework.BaseActivity;
+import com.chenyu.monster.home.View.HomeView;
+import com.chenyu.monster.home.presenter.HomePresenter;
+import com.chenyu.monster.home.presenter.HomePresenterImpl;
 import com.chenyu.monster.util.SnackUtil;
 
+/**
+ * 首页显示四个类别
+ */
 public class HomeActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    private static final int REQUEST_LOGIN = 1;
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, HomeView {
     /**
      * toolbar
      */
@@ -45,9 +50,9 @@ public class HomeActivity extends BaseActivity
      */
     private ImageView avatar;
     /**
-     * 推出
+     * controller
      */
-    private ImageView logout;
+    private HomePresenter mHomePresenter;
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +62,7 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewDidLoad();
     }
 
     @Override
@@ -85,12 +91,6 @@ public class HomeActivity extends BaseActivity
         View headerView = navigationView.getHeaderView(0);
         avatar = (ImageView) headerView.findViewById(R.id.imageView);
         avatar.setOnClickListener(this);
-
-        logout = (ImageView) headerView.findViewById(R.id.logout_iv);
-        logout.setOnClickListener(this);
-        if (DoitApplication.application.getUser() != null) {
-            logout.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
@@ -103,6 +103,13 @@ public class HomeActivity extends BaseActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    /**
+     * view完成后初始化
+     */
+    public void viewDidLoad() {
+        mHomePresenter = new HomePresenterImpl(this);
     }
 
     @Override
@@ -133,19 +140,7 @@ public class HomeActivity extends BaseActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camara) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
+        mHomePresenter.switchDrawerItem(id);
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -157,26 +152,35 @@ public class HomeActivity extends BaseActivity
         switch (id) {
             case R.id.imageView:
                 if (DoitApplication.application.getUser() == null) {
-                    startActivity(LoginActivity.class, REQUEST_LOGIN);
+                    startActivity(LoginActivity.class);
                 } else {
                     //TODO 个人资料？
                 }
-                break;
-            case R.id.logout_iv:
-
                 break;
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case REQUEST_LOGIN:
-                    logout.setVisibility(View.VISIBLE);
-                    break;
-            }
-        }
+    public void switch2News() {
+        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ).commit();
+        toolbar.setTitle(getString(R.string.news));
+    }
+
+    @Override
+    public void switch2Image() {
+        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ).commit();
+        toolbar.setTitle(getString(R.string.image));
+    }
+
+    @Override
+    public void switch2Weather() {
+        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ).commit();
+        toolbar.setTitle(getString(R.string.weather));
+    }
+
+    @Override
+    public void switch2About() {
+        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ).commit();
+        toolbar.setTitle(getString(R.string.about));
     }
 }

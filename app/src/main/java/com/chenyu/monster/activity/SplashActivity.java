@@ -1,12 +1,12 @@
 package com.chenyu.monster.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 
 import com.chenyu.monster.R;
 import com.chenyu.monster.framework.BaseActivity;
+import com.chenyu.monster.home.widget.HomeActivity;
 
 /**
  * Created by chenyu on 16/1/29.
