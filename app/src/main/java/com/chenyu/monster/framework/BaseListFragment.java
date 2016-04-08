@@ -25,15 +25,11 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
     private RecyclerView.ItemAnimator itemAnimator;
     private SwipeRefreshLayout swipeRefreshLayout;
     private List<Entity> data;
-    private boolean loadMore;
-    private String url;
 
-    public BaseListFragment(int rootLayoutId, int swipeLayoutId, int recyclerId, boolean loadMore, String url) {
+    public BaseListFragment(int rootLayoutId, int swipeLayoutId, int recyclerId) {
         super(rootLayoutId);
-        this.loadMore = loadMore;
         this.swipeLayoutId = swipeLayoutId;
         this.recyclerId = recyclerId;
-        this.url = url;
     }
 
     protected abstract RecyclerView.Adapter getAdapter();

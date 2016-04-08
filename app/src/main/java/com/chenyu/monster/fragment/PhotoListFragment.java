@@ -18,7 +18,7 @@ public class PhotoListFragment extends BaseListFragment {
     private PhotoListAdapter adapter;
 
     public PhotoListFragment() {
-        super(R.layout.f_photo, R.id.refresh_srl, R.id.list_rlv, true, "");
+        super(R.layout.f_recycle_list, R.id.refresh_srl, R.id.list_rlv, true, "");
     }
 
     @Override
