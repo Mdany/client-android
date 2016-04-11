@@ -15,4 +15,6 @@
     <color name="colorSecondContent">#c6c6c6</color>
     <color name="bg_gray">#f6f6f6</color>
     <color name="ripple">#ff21272b</color>
+    <!--image-->
+    <color name="primary_text">#212121</color>
 </resources>

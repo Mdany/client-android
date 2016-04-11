@@ -17,14 +17,14 @@ import java.util.List;
  * LayoutManager处理视图位置，ItemAnimator处理动画。ViewHolder是最后的部分：它的职责是处理发生在RecyclerView中特定item的事件。
  */
 public abstract class BaseListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
-    private int recyclerId;
-    private int swipeLayoutId;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.ItemAnimator itemAnimator;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private List<Entity> data;
+    protected int recyclerId;
+    protected int swipeLayoutId;
+    protected RecyclerView recyclerView;
+    protected BaseListAdapter adapter;
+    protected RecyclerView.LayoutManager layoutManager;
+    protected RecyclerView.ItemAnimator itemAnimator;
+    protected SwipeRefreshLayout swipeRefreshLayout;
+    protected List<Entity> data;
 
     public BaseListFragment(int rootLayoutId, int swipeLayoutId, int recyclerId) {
         super(rootLayoutId);
@@ -32,7 +32,7 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
         this.recyclerId = recyclerId;
     }
 
-    protected abstract RecyclerView.Adapter getAdapter();
+    protected abstract BaseListAdapter getAdapter();
 
     protected abstract RecyclerView.LayoutManager getManager();
 
@@ -55,6 +55,7 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
         recyclerView.setLayoutManager(layoutManager);
 
         swipeRefreshLayout.setOnRefreshListener(this);
+        onRefresh();
         return rootView;
     }
 

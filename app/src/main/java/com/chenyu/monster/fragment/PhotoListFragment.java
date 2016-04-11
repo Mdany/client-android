@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.chenyu.monster.R;
 import com.chenyu.monster.adapter.PhotoListAdapter;
+import com.chenyu.monster.framework.BaseListAdapter;
 import com.chenyu.monster.framework.BaseListFragment;
 import com.chenyu.monster.model.DPhoto;
 
@@ -18,11 +19,11 @@ public class PhotoListFragment extends BaseListFragment {
     private PhotoListAdapter adapter;
 
     public PhotoListFragment() {
-        super(R.layout.f_recycle_list, R.id.refresh_srl, R.id.list_rlv, true, "");
+        super(R.layout.f_recycle_list, R.id.refresh_srl, R.id.list_rlv);
     }
 
     @Override
-    protected RecyclerView.Adapter getAdapter() {
+    protected BaseListAdapter<DPhoto, PhotoListAdapter.PhotoViewHolder> getAdapter() {
         adapter = new PhotoListAdapter(mActivity, new ArrayList<DPhoto>());
         return adapter;
     }

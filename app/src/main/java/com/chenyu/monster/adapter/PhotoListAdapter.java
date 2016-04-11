@@ -33,30 +33,11 @@ public class PhotoListAdapter extends BaseListAdapter<DPhoto, PhotoListAdapter.P
         //TODO 对view的操作
     }
 
-    class PhotoViewHolder extends RecyclerView.ViewHolder {
+    public class PhotoViewHolder extends RecyclerView.ViewHolder {
         //TODO 声明itemView控件
         public PhotoViewHolder(View itemView) {
             super(itemView);
             //TODO view = findByID
         }
-    }
-
-    @Override
-    public void addItem(DPhoto item) {
-        data.add(0,item);
-        notifyItemInserted(0);
-    }
-
-    @Override
-    public void removeItem(int position) {
-        data.remove(position);
-        notifyItemRemoved(position);
-    }
-
-    @Override
-    public void setData(List<DPhoto> data) {
-        this.data.clear();
-        this.data = data;
-        notifyDataSetChanged();
     }
 }

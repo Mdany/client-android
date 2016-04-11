@@ -89,8 +89,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.google.code.gson:gson:2.4'
-    compile 'com.facebook.fresco:fresco:0.8.1+'
+    compile 'com.facebook.fresco:fresco:0.9.0+'
     compile 'de.hdodenhof:circleimageview:2.0.0'
 }

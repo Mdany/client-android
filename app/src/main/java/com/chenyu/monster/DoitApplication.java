@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.chenyu.monster.model.DUser;
 import com.chenyu.monster.util.PreUtils;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 
 /**
@@ -17,6 +18,7 @@ public class DoitApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
+        Fresco.initialize(this);
     }
 
     public DUser getUser() {

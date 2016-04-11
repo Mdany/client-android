@@ -23,4 +23,6 @@
     <string name="register">注册</string>
     <string name="login_username_error">请输入正确的邮箱</string>
     <string name="login_password_error">请输入正确的密码</string>
+    <!--internet-->
+    <string name="data_load_fail">加载数据失败</string>
 </resources>
