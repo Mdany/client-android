@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.chenyu.monster.DoitApplication;
+import com.chenyu.monster.Images.widget.ImageFragment;
 import com.chenyu.monster.R;
 import com.chenyu.monster.login.LoginActivity;
 import com.chenyu.monster.framework.BaseActivity;
@@ -168,7 +169,7 @@ public class HomeActivity extends BaseActivity
 
     @Override
     public void switch2Image() {
-        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new ImageFragment()).commit();
         toolbar.setTitle(getString(R.string.image));
     }
 

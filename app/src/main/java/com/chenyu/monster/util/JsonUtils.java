@@ -50,6 +50,14 @@ public class JsonUtils {
         return mGson.fromJson(jsonObject, clz);
     }
 
+    /**
+     * json to obj by type
+     * @param json
+     * @param type
+     * @param <T>
+     * @return
+     * @throws JsonSyntaxException
+     */
     public static <T> T deserialize(String json, Type type) throws JsonSyntaxException {
         return mGson.fromJson(json, type);
     }

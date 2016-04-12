@@ -23,6 +23,10 @@ public class PhotoListFragment extends BaseListFragment {
     }
 
     @Override
+    public void viewDidLoad() {
+    }
+
+    @Override
     protected BaseListAdapter<DPhoto, PhotoListAdapter.PhotoViewHolder> getAdapter() {
         adapter = new PhotoListAdapter(mActivity, new ArrayList<DPhoto>());
         return adapter;

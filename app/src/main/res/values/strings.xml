@@ -25,4 +25,9 @@
     <string name="login_password_error">请输入正确的密码</string>
     <!--internet-->
     <string name="data_load_fail">加载数据失败</string>
+    <!--news-->
+    <string name="news_top">头条</string>
+    <string name="news_nba">NBA</string>
+    <string name="news_cars">汽车</string>
+    <string name="news_jokes">笑话</string>
 </resources>

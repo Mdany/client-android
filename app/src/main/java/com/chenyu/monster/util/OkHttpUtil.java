@@ -32,7 +32,6 @@ public class OkHttpUtil {
         mBuilder.connectTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS);
-        //cookie enabled
         mOkHttpClient = mBuilder.build();
         mHandler = new Handler(Looper.getMainLooper());
     }

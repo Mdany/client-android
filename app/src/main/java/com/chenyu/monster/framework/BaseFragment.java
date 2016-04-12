@@ -21,14 +21,14 @@ public abstract class BaseFragment extends Fragment {
         this.rootLayoutID = rootLayoutID;
     }
 
-    public BaseFragment() {
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(rootLayoutID, container, false);
         mActivity = getActivity();
+        viewDidLoad();
         return rootView;
     }
+
+    public abstract void viewDidLoad();
 }

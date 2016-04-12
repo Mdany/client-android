@@ -1,13 +1,9 @@
 package com.chenyu.monster.Images.widget;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.chenyu.monster.Images.ImageAdapter;
 import com.chenyu.monster.Images.presenter.ImagePresenter;
@@ -32,11 +28,9 @@ public class ImageFragment extends BaseListFragment implements ImageView {
         super(R.layout.f_recycle_list, R.id.refresh_srl, R.id.list_rlv);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void viewDidLoad() {
         imagePresenter = new ImagePresenterImpl(this);
-        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
