@@ -21,6 +21,7 @@ import com.chenyu.monster.framework.BaseActivity;
 import com.chenyu.monster.home.View.HomeView;
 import com.chenyu.monster.home.presenter.HomePresenter;
 import com.chenyu.monster.home.presenter.HomePresenterImpl;
+import com.chenyu.monster.news.widget.NewsFragment;
 import com.chenyu.monster.util.SnackUtil;
 
 /**
@@ -163,7 +164,7 @@ public class HomeActivity extends BaseActivity
 
     @Override
     public void switch2News() {
-        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new NewsFragment()).commit();
         toolbar.setTitle(getString(R.string.news));
     }
 

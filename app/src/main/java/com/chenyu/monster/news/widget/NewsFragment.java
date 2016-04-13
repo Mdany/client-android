@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 
 import com.chenyu.monster.R;
 import com.chenyu.monster.framework.BaseFragment;
+import com.chenyu.monster.news.NewsType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +36,10 @@ public class NewsFragment extends BaseFragment {
 
     private void setUpViewPager() {
         NewsPagerAdapter adapter = new NewsPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(getString(R.string.news_top), NewsListFragment.newInstance());
-        adapter.addFragment(getString(R.string.news_nba), NewsListFragment.newInstance());
-        adapter.addFragment(getString(R.string.news_cars), NewsListFragment.newInstance());
-        adapter.addFragment(getString(R.string.news_jokes), NewsListFragment.newInstance());
+        adapter.addFragment(getString(R.string.news_top), NewsListFragment.newInstance(NewsType.NEWS_TYPE_TOP));
+        adapter.addFragment(getString(R.string.news_nba), NewsListFragment.newInstance(NewsType.NEWS_TYPE_NBA));
+        adapter.addFragment(getString(R.string.news_cars), NewsListFragment.newInstance(NewsType.NEWS_TYPE_CARS));
+        adapter.addFragment(getString(R.string.news_jokes), NewsListFragment.newInstance(NewsType.NEWS_TYPE_JOKES));
         viewPager.setAdapter(adapter);
     }
 

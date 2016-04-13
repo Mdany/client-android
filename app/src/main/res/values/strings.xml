@@ -5,7 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-
+    <!--通用-->
+    <string name="footer_load">正在加载…</string>
     <!--User-->
     <string name="user_name">Nemo</string>
     <string name="user_desc">非同城，不交友</string>

@@ -2,7 +2,6 @@ package com.chenyu.monster.Images.widget;
 
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chenyu.monster.Images.ImageAdapter;
@@ -10,7 +9,6 @@ import com.chenyu.monster.Images.presenter.ImagePresenter;
 import com.chenyu.monster.Images.presenter.ImagePresenterImpl;
 import com.chenyu.monster.Images.view.ImageView;
 import com.chenyu.monster.R;
-import com.chenyu.monster.framework.BaseListAdapter;
 import com.chenyu.monster.framework.BaseListFragment;
 import com.chenyu.monster.model.ImageBean;
 import com.chenyu.monster.util.SnackUtil;
@@ -21,7 +19,7 @@ import java.util.List;
  * Created by chenyu on 16/4/8.
  * 图片列表fragment
  */
-public class ImageFragment extends BaseListFragment implements ImageView {
+public class ImageFragment extends BaseListFragment<ImageAdapter, LinearLayoutManager, DefaultItemAnimator> implements ImageView {
     private ImagePresenter imagePresenter;
 
     public ImageFragment() {
@@ -34,17 +32,17 @@ public class ImageFragment extends BaseListFragment implements ImageView {
     }
 
     @Override
-    protected BaseListAdapter<ImageBean, ImageAdapter.ImageViewHolder> getAdapter() {
+    protected ImageAdapter getAdapter() {
         return new ImageAdapter(mActivity);
     }
 
     @Override
-    protected RecyclerView.LayoutManager getManager() {
+    protected LinearLayoutManager getManager() {
         return new LinearLayoutManager(mActivity);
     }
 
     @Override
-    protected RecyclerView.ItemAnimator getItemAnimator() {
+    protected DefaultItemAnimator getItemAnimator() {
         return new DefaultItemAnimator();
     }
 
@@ -57,9 +55,6 @@ public class ImageFragment extends BaseListFragment implements ImageView {
 
     @Override
     protected void refreshData() {
-        if (data != null) {
-            data.clear();
-        }
         imagePresenter.loadImageList();
     }
 

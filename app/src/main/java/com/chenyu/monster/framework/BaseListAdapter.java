@@ -24,7 +24,11 @@ public abstract class BaseListAdapter<M extends Entity, VH extends RecyclerView.
 
     @Override
     public int getItemCount() {
-        return data.size();
+        if (data != null) {
+            return data.size();
+        } else {
+            return 0;
+        }
     }
 
     /**

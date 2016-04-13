@@ -2,11 +2,9 @@ package com.chenyu.monster.fragment;
 
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import com.chenyu.monster.R;
 import com.chenyu.monster.adapter.PhotoListAdapter;
-import com.chenyu.monster.framework.BaseListAdapter;
 import com.chenyu.monster.framework.BaseListFragment;
 import com.chenyu.monster.model.DPhoto;
 
@@ -15,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by chenyu on 16/2/4.
  */
-public class PhotoListFragment extends BaseListFragment {
+public class PhotoListFragment extends BaseListFragment<PhotoListAdapter, LinearLayoutManager, DefaultItemAnimator> {
     private PhotoListAdapter adapter;
 
     public PhotoListFragment() {
@@ -27,18 +25,18 @@ public class PhotoListFragment extends BaseListFragment {
     }
 
     @Override
-    protected BaseListAdapter<DPhoto, PhotoListAdapter.PhotoViewHolder> getAdapter() {
+    protected PhotoListAdapter getAdapter() {
         adapter = new PhotoListAdapter(mActivity, new ArrayList<DPhoto>());
         return adapter;
     }
 
     @Override
-    protected RecyclerView.LayoutManager getManager() {
+    protected LinearLayoutManager getManager() {
         return new LinearLayoutManager(mActivity);
     }
 
     @Override
-    protected RecyclerView.ItemAnimator getItemAnimator() {
+    protected DefaultItemAnimator getItemAnimator() {
         return new DefaultItemAnimator();
     }
 }
