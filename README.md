@@ -1,3 +1,6 @@
 # client_android
-马哥私有云客户端
+新闻、天气客户端
+使用OkHttp、Fresco
+
+
 KeyStore使用要放在project的上级目录

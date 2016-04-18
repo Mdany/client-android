@@ -39,6 +39,7 @@ captures/
 *.iws
 *.idea/
 out/
+app/app.iml
 
 # Mac
 .DS_Store
