@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  * Created by chenyu on 16/2/4.
  */
 public abstract class BaseFragment extends Fragment {
-    private int rootLayoutID;
+    protected int rootLayoutID;
     protected View rootView;
     protected Activity mActivity;
 

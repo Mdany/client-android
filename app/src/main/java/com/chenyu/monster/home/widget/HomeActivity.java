@@ -23,6 +23,7 @@ import com.chenyu.monster.home.presenter.HomePresenter;
 import com.chenyu.monster.home.presenter.HomePresenterImpl;
 import com.chenyu.monster.news.widget.NewsFragment;
 import com.chenyu.monster.util.SnackUtil;
+import com.chenyu.monster.weather.widget.WeatherFragment;
 
 /**
  * 首页显示四个类别
@@ -93,6 +94,7 @@ public class HomeActivity extends BaseActivity
         View headerView = navigationView.getHeaderView(0);
         avatar = (ImageView) headerView.findViewById(R.id.imageView);
         avatar.setOnClickListener(this);
+        switch2News();
     }
 
     @Override
@@ -176,7 +178,7 @@ public class HomeActivity extends BaseActivity
 
     @Override
     public void switch2Weather() {
-        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new WeatherFragment()).commit();
         toolbar.setTitle(getString(R.string.weather));
     }
 

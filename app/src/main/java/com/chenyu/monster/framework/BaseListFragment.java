@@ -41,6 +41,7 @@ public abstract class BaseListFragment<A extends BaseListAdapter, L extends Recy
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rootView = inflater.inflate(rootLayoutID, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(swipeLayoutId);
         recyclerView = (RecyclerView) rootView.findViewById(recyclerId);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
@@ -55,6 +56,7 @@ public abstract class BaseListFragment<A extends BaseListAdapter, L extends Recy
         recyclerView.setLayoutManager(layoutManager);
 
         swipeRefreshLayout.setOnRefreshListener(this);
+        viewDidLoad();
         onRefresh();
         return rootView;
     }

@@ -7,11 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="input_layout_hint">
@@ -24,8 +27,24 @@
         <item name="android:textColor">@color/colorSecondTitle</item>
         <item name="android:textSize">@dimen/text_size_normal_6</item>
     </style>
+
     <style name="c_news_content">
         <item name="android:textColor">@color/colorContent</item>
         <item name="android:textSize">@dimen/text_size_normal_5</item>
+    </style>
+
+    <style name="weather_title">
+        <item name="android:textSize">@dimen/text_size_big_3</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="weather_temp">
+        <item name="android:textSize">@dimen/text_size_big_0</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="weather_weather">
+        <item name="android:textSize">@dimen/text_size_normal_8</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>
