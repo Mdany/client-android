@@ -122,7 +122,7 @@ public class NewsListFragment extends BaseListFragment<NewsListAdapter, LinearLa
         if (pageIndex == 0) {// 第一次加载数据
             adapter.setData(beanList);
         } else {
-            if (beanList == null) {//没有更多数据不显示footer
+            if (beanList == null || beanList.size() == 0) {//没有更多数据不显示footer
                 adapter.setIsShowFooter(false);
             }
             adapter.addItems(beanList);

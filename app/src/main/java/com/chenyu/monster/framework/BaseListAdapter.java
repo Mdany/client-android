@@ -51,8 +51,9 @@ public abstract class BaseListAdapter<M extends Entity, VH extends RecyclerView.
     public void addItems(List<M> items) {
         if (data == null)
             data = new ArrayList<>();
-        data.addAll(0, items);
-        notifyItemRangeInserted(0, items.size());
+        int start = data.size();
+        data.addAll(items);
+        notifyItemRangeInserted(start, items.size());
     }
 
     /**

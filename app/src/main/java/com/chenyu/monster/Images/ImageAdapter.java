@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chenyu.monster.R;
 import com.chenyu.monster.framework.BaseListAdapter;
 import com.chenyu.monster.model.ImageBean;
+import com.chenyu.monster.util.DisplayUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -20,23 +22,27 @@ import java.util.List;
  * 图片列表adapter
  */
 public class ImageAdapter extends BaseListAdapter<ImageBean, ImageAdapter.ImageViewHolder> {
-    private List<ImageBean> data;
-    private Context mContext;
+    private int mMaxWidth;
+    private int mMaxHeight;
 
     public ImageAdapter(Context mContext) {
         super(mContext);
-        this.mContext = mContext;
+        mMaxWidth = DisplayUtils.getScreenWidth() - 20;
+        mMaxHeight = DisplayUtils.getScreenHeight() - DisplayUtils.getStatusHeight(mContext) -
+                DisplayUtils.dp2px(96);
     }
 
     public ImageAdapter(Context mContext, List<ImageBean> data) {
         super(mContext, data);
-        this.mContext = mContext;
         this.data = data;
+        mMaxWidth = DisplayUtils.getScreenWidth() - 20;
+        mMaxHeight = DisplayUtils.getScreenHeight() - DisplayUtils.getStatusHeight(mContext) -
+                DisplayUtils.dp2px(96);
     }
 
     @Override
     public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.c_image, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.c_image, parent, false);
         ImageViewHolder imageItem = new ImageViewHolder(view);
         return imageItem;
     }
@@ -48,6 +54,12 @@ public class ImageAdapter extends BaseListAdapter<ImageBean, ImageAdapter.ImageV
             return;
         }
         holder.title.setText(image.title);
+        float scale = (float) image.width / (float) mMaxWidth;
+        int height = (int) (image.height / scale);
+        if (height > mMaxHeight) {
+            height = mMaxHeight;
+        }
+        holder.image.setLayoutParams(new LinearLayout.LayoutParams(mMaxWidth, height));
         holder.image.setImageURI(Uri.parse(image.thumburl));
     }
 

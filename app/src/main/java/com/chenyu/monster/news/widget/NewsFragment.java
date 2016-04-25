@@ -28,13 +28,12 @@ public class NewsFragment extends BaseFragment {
     public void viewDidLoad() {
         tabLayout = (TabLayout) rootView.findViewById(R.id.tab_layout);
         viewPager = (ViewPager) rootView.findViewById(R.id.view_pager);
-        viewPager.setOffscreenPageLimit(3);
         setUpViewPager();
         setUpTabLayout();
-        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void setUpViewPager() {
+        viewPager.setOffscreenPageLimit(3);
         NewsPagerAdapter adapter = new NewsPagerAdapter(getChildFragmentManager());
         adapter.addFragment(getString(R.string.news_top), NewsListFragment.newInstance(NewsType.NEWS_TYPE_TOP));
         adapter.addFragment(getString(R.string.news_nba), NewsListFragment.newInstance(NewsType.NEWS_TYPE_NBA));
@@ -48,6 +47,7 @@ public class NewsFragment extends BaseFragment {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.news_nba));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.news_cars));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.news_jokes));
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     /**

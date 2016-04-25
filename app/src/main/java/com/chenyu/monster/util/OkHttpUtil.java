@@ -161,7 +161,7 @@ public class OkHttpUtil {
 
         private Type getSuperclassTypeParameter(Class<?> subClass) {
             Type superClass = subClass.getGenericSuperclass();
-            if (subClass instanceof Class) {
+            if (superClass instanceof Class) {
                 throw new RuntimeException("Missing type parameter");
             }
             ParameterizedType parameterized = (ParameterizedType) superClass;

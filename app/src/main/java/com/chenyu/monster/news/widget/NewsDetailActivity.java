@@ -12,8 +12,6 @@ import com.chenyu.monster.framework.BaseActivity;
 import com.chenyu.monster.model.NewsBean;
 import com.chenyu.monster.news.presenter.NewsDetailPresenter;
 import com.chenyu.monster.news.presenter.NewsDetailPresenterImpl;
-import com.chenyu.monster.news.presenter.NewsPresenter;
-import com.chenyu.monster.news.presenter.NewsPresenterImpl;
 import com.chenyu.monster.news.view.NewsDetailView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -47,6 +45,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         htmlTextView = (HtmlTextView) findViewById(R.id.htv_news_detail_content);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

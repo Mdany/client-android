@@ -25,9 +25,9 @@ public class NewsDetailPresenterImpl implements NewsDetailPresenter, NewsModelIm
 
     @Override
     public void onSuccess(NewsDetailBean newsDetailBean) {
+        newsDetailView.hideProgress();
         if (newsDetailBean == null) return;
         newsDetailView.showNewsDetailContent(newsDetailBean.body);
-        newsDetailView.hideProgress();
     }
 
     @Override

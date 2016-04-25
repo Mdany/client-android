@@ -41,6 +41,7 @@ public abstract class BaseListFragment<A extends BaseListAdapter, L extends Recy
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mActivity = getActivity();
         rootView = inflater.inflate(rootLayoutID, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(swipeLayoutId);
         recyclerView = (RecyclerView) rootView.findViewById(recyclerId);

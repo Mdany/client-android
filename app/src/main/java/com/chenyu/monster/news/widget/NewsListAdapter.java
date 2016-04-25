@@ -19,13 +19,11 @@ import com.facebook.drawee.view.SimpleDraweeView;
 public class NewsListAdapter extends BaseListAdapter<NewsBean, RecyclerView.ViewHolder> {
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1;
-    private Context mContext;
     private boolean isShowFooter = true;
     private OnItemClickListener itemClickListener;
 
     public NewsListAdapter(Context mContext) {
         super(mContext);
-        this.mContext = mContext;
     }
 
     @Override
@@ -44,10 +42,10 @@ public class NewsListAdapter extends BaseListAdapter<NewsBean, RecyclerView.View
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View contentView = null;
         if (viewType == TYPE_ITEM) {
-            contentView = LayoutInflater.from(mContext).inflate(R.layout.c_news_list, parent);
+            contentView = LayoutInflater.from(parent.getContext()).inflate(R.layout.c_news_list, parent, false);
             return new NewsViewHolder(contentView);
         } else {
-            contentView = LayoutInflater.from(mContext).inflate(R.layout.footer, parent);
+            contentView = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer, parent, false);
             return new FooterViewHolder(contentView);
         }
     }
@@ -131,7 +129,7 @@ public class NewsListAdapter extends BaseListAdapter<NewsBean, RecyclerView.View
         @Override
         public void onClick(View v) {
             if (itemClickListener != null) {
-                itemClickListener.onItemClick(v, getAdapterPosition());
+                itemClickListener.onItemClick(v, getPosition());
             }
         }
     }

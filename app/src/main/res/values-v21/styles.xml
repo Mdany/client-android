@@ -4,10 +4,43 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
     </style>
 
     <style name="input_layout_hint">
         <item name="android:textColor">@color/colorSecondTitle</item>
         <item name="android:textSize">@dimen/text_size_normal_6</item>
+    </style>
+    <!--news-->
+    <style name="c_news_title">
+        <item name="android:textColor">@color/colorSecondTitle</item>
+        <item name="android:textSize">@dimen/text_size_normal_6</item>
+    </style>
+
+    <style name="c_news_content">
+        <item name="android:textColor">@color/colorContent</item>
+        <item name="android:textSize">@dimen/text_size_normal_5</item>
+    </style>
+
+    <style name="weather_title">
+        <item name="android:textSize">@dimen/text_size_big_3</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="weather_temp">
+        <item name="android:textSize">@dimen/text_size_big_0</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="weather_weather">
+        <item name="android:textSize">@dimen/text_size_normal_8</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="AppTheme.NoActionBar.Translucent">
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 </resources>
