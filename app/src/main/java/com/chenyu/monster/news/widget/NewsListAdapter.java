@@ -28,6 +28,7 @@ public class NewsListAdapter extends BaseListAdapter<NewsBean, RecyclerView.View
 
     @Override
     public int getItemViewType(int position) {
+        //item 在上 footer在下
         if (!isShowFooter) {
             return TYPE_ITEM;
         }
@@ -40,12 +41,13 @@ public class NewsListAdapter extends BaseListAdapter<NewsBean, RecyclerView.View
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View contentView = null;
         if (viewType == TYPE_ITEM) {
-            contentView = LayoutInflater.from(parent.getContext()).inflate(R.layout.c_news_list, parent, false);
+            View contentView = LayoutInflater.from(parent.getContext()).inflate(R.layout.c_news_list, parent, false);
             return new NewsViewHolder(contentView);
         } else {
-            contentView = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer, parent, false);
+            View contentView = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer, null);
+            contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
             return new FooterViewHolder(contentView);
         }
     }
