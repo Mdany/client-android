@@ -107,7 +107,6 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
 
     @Override
     public void setWeatherData(List<WeatherBean> lists) {
-        List<View> adapterList = new ArrayList<View>();
         for (WeatherBean weatherBean : lists) {
             View view = LayoutInflater.from(getActivity()).inflate(R.layout.c_weather, null, false);
             TextView dateTV = (TextView) view.findViewById(R.id.date);
@@ -122,7 +121,6 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
             todayWeatherTV.setText(weatherBean.weather);
             todayWeatherImage.setImageResource(weatherBean.imageRes);
             mWeatherContentLayout.addView(view);
-            adapterList.add(view);
         }
     }
 

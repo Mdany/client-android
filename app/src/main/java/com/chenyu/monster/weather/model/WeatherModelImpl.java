@@ -47,17 +47,17 @@ public class WeatherModelImpl implements WeatherModel {
     @Override
     public void loadLocation(Context context, final LoadLocationListener listener) {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                     && context.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                LogUtils.e(TAG, "location no permission.");
-                listener.onFailure("location failure", null);
+                LogUtils.e(TAG, "location failure.");
+                listener.onFailure("location failure.", null);
                 return;
             }
         }
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        if (location == null) {
-            LogUtils.e(TAG, "location failure");
+        if(location == null) {
+            LogUtils.e(TAG, "location failure.");
             listener.onFailure("location failure.", null);
             return;
         }
@@ -93,12 +93,18 @@ public class WeatherModelImpl implements WeatherModel {
         return sb.toString();
     }
 
+    /**
+     * 根据定位加载天气数据
+     */
     public interface LoadWeatherListener {
         void onSuccess(List<WeatherBean> weathers);
 
         void onFailure(String msg, Exception e);
     }
 
+    /**
+     * 定位，获取当前城市信息
+     */
     public interface LoadLocationListener {
         void onSuccess(String cityName);
 
