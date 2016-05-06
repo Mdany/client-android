@@ -20,6 +20,7 @@
             android:id="@+id/iv_news_avatar"
             android:layout_width="86dp"
             android:layout_height="60dp"
+            android:transitionName="@string/transition_news_avatar"
             android:scaleType="centerCrop" />
 
         <LinearLayout
