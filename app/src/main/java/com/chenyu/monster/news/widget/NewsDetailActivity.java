@@ -5,6 +5,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.chenyu.monster.R;
@@ -13,7 +14,7 @@ import com.chenyu.monster.model.NewsBean;
 import com.chenyu.monster.news.presenter.NewsDetailPresenter;
 import com.chenyu.monster.news.presenter.NewsDetailPresenterImpl;
 import com.chenyu.monster.news.view.NewsDetailView;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.chenyu.monster.util.ImageLoaderUtils;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 
@@ -26,7 +27,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     private NewsDetailPresenter newsDetailPresenter;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ProgressBar progressBar;
-    private SimpleDraweeView newsAvatar;
+    private ImageView newsAvatar;
     private Toolbar toolbar;
     private HtmlTextView htmlTextView;
 
@@ -40,7 +41,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         news = getIntent().getParcelableExtra(KEY_NEWS);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_layout);
         progressBar = (ProgressBar) findViewById(R.id.progress);
-        newsAvatar = (SimpleDraweeView) findViewById(R.id.iv_news_detail_avatar);
+        newsAvatar = (ImageView) findViewById(R.id.iv_news_detail_avatar);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         htmlTextView = (HtmlTextView) findViewById(R.id.htv_news_detail_content);
 
@@ -64,7 +65,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         }
 
         if (!TextUtils.isEmpty(news.imgsrc)) {
-            newsAvatar.setImageURI(Uri.parse(news.imgsrc));
+            ImageLoaderUtils.load(mContext, Uri.parse(news.imgsrc), newsAvatar);
         } else {
             newsAvatar.setVisibility(View.GONE);
         }

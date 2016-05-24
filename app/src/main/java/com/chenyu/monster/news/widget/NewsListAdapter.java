@@ -6,12 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chenyu.monster.R;
 import com.chenyu.monster.framework.BaseListAdapter;
 import com.chenyu.monster.model.NewsBean;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.chenyu.monster.util.DisplayUtils;
+import com.chenyu.monster.util.ImageLoaderUtils;
 
 /**
  * Created by chenyu on 16/4/12.
@@ -59,7 +61,7 @@ public class NewsListAdapter extends BaseListAdapter<NewsBean, RecyclerView.View
             if (newsBean == null) return;
             ((NewsViewHolder) holder).title.setText(newsBean.title);
             ((NewsViewHolder) holder).content.setText(newsBean.digest);
-            ((NewsViewHolder) holder).avatar.setImageURI(Uri.parse(newsBean.imgsrc));
+            ImageLoaderUtils.load(mContext, Uri.parse(newsBean.imgsrc), DisplayUtils.dp2px(86), DisplayUtils.dp2px(60), ((NewsViewHolder) holder).avatar);
         }
     }
 
@@ -118,13 +120,13 @@ public class NewsListAdapter extends BaseListAdapter<NewsBean, RecyclerView.View
      */
     public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView title, content;
-        private SimpleDraweeView avatar;
+        private ImageView avatar;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.tv_news_title);
             content = (TextView) itemView.findViewById(R.id.tv_news_content);
-            avatar = (SimpleDraweeView) itemView.findViewById(R.id.iv_news_avatar);
+            avatar = (ImageView) itemView.findViewById(R.id.iv_news_avatar);
             itemView.setOnClickListener(this);
         }
 

@@ -24,7 +24,7 @@
             android:textColor="@color/primary_text"
             android:textSize="@dimen/text_size_normal_8" />
 
-        <com.facebook.drawee.view.SimpleDraweeView
+        <ImageView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

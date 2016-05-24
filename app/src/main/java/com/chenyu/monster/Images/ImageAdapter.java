@@ -6,14 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chenyu.monster.R;
 import com.chenyu.monster.framework.BaseListAdapter;
 import com.chenyu.monster.model.ImageBean;
 import com.chenyu.monster.util.DisplayUtils;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.chenyu.monster.util.ImageLoaderUtils;
 
 import java.util.List;
 
@@ -59,18 +59,17 @@ public class ImageAdapter extends BaseListAdapter<ImageBean, ImageAdapter.ImageV
         if (height > mMaxHeight) {
             height = mMaxHeight;
         }
-        holder.image.setLayoutParams(new LinearLayout.LayoutParams(mMaxWidth, height));
-        holder.image.setImageURI(Uri.parse(image.thumburl));
+        ImageLoaderUtils.load(mContext, Uri.parse(image.thumburl), holder.image);
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
-        private SimpleDraweeView image;
+        private ImageView image;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.tv_image_title);
-            image = (SimpleDraweeView) itemView.findViewById(R.id.iv_image);
+            image = (ImageView) itemView.findViewById(R.id.iv_image);
         }
     }
 }
